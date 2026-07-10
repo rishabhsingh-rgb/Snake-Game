@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.body{
+    background:url("../img/bg.jpg");
+    background-size:cover;
+    background-position:center;
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.topBar{
+
+    width:min(600px,95vw);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 25px;
+
+    margin-bottom:10px;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.4);
+
+}
+
+.leftPanel{
+    display:flex;
+    align-items:center;
+}
+
+.centerPanel{
+    display:flex;
+    gap:12px;
+}
+
+.rightPanel{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    color:white;
+}
+
+
+#scoreBox{
+    position:static;
+    margin-top:28px;
+    font-size: clamp(20px,2vw,20px);
+    font-weight: bold;
+    font-family: 'New Tegomin', serif;
+}
+
+#hiscoreBox{
+    position:static;
+    margin-top:5px;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'New Tegomin', serif;
+}
+
+#board{
+    background: linear-gradient(#b8da7a 1px,transparent 1px),
+    linear-gradient(90deg, #b8d87a 1px,transparent 1px);
+    background-color:#dff5b5;
+    
+    background-size:calc(100%/18) calc(100%/18);
+    width: min(90vmin,650px);
+    aspect-ratio:1/1;
+    border: 2px solid black;
+    display: grid;
+    grid-template-rows: repeat(18, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+    overflow:hidden;
+}
+
+.head{
+    position:relative;
+    border: 2px solid rgb(34, 4, 34); 
+    transform: scale(1.02);
+    border-radius: 9px;
+    background:linear-gradient(#7CFC00,#32CD32);
+    box-shadow:0 0 12px lime;
+}
+
+.head::before,
+.head::after{
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: black;
+    border-radius: 50%;
+    top: 6px;
+}
+
+.head::before{
+    left:5px;
+}
+
+.head::after{
+    right:5px;
+}
+
+.snake{
+    background:linear-gradient(#3cb043,#228B22);
+    border: .25vmin solid white;
+    border-radius: 12px;
+    transition:.08s linear;
+}
+
+.food{
+    background: radial-gradient(circle, #ff4d4d, #b30000);
+    border: .25vmin solid black;
+    border-radius: 50%;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        box-shadow:0 0 5px red;
+    }
+    to{
+        box-shadow:0 0 18px red;
+    }
+}
+
+#musicBtn{
+
+    padding:8px 16px;
+    border:none;
+    font-size:14px;
+    cursor:pointer;
+    font-family: 'New Tegomin', serif;
+    border-radius:30px;
+    background:#222;
+    color:white;
+    transition:.3s;
+}
+
+#musicBtn:hover{
+    background:#555;
+    transform:scale(1.08);
+}
+
+.hidden{
+    display: none !important;
+}
+
+#gameOverScreen{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+}
+
+.gameOverBox{
+
+    width:min(90vw,350px);
+    padding:30px;
+
+    background:linear-gradient(145deg,#202020,#2d2d2d);
+
+    border:3px solid #4CAF50;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:0 0 25px rgba(0,255,100,.4);
+
+    animation:popup .35s ease;
+}
+
+.gameOverBox h1{
+
+    font-size:42px;
+    color:#ff5252;
+    margin-bottom:25px;
+
+    text-shadow:0 0 10px red;
+}
+
+.gameOverScore{
+
+    font-size:28px;
+    margin-bottom:30px;
+}
+
+#finalScore{
+
+    color:#FFD700;
+
+    font-size:42px;
+
+    font-weight:bold;
+}
+
+#restartBtn{
+
+    padding:14px 28px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#4CAF50;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+#restartBtn:hover{
+
+    transform:scale(1.08);
+
+    background:#45a049;
+}
+
+@keyframes popup{
+
+    from{
+        transform:scale(.7);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+#pauseText{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:60px;
+    font-weight:bold;
+    color:rgb(0, 0, 0);
+    display:none;
+    z-index:1000;
+}
+
+#difficulty{
+
+    display:flex;
+    gap:12px;
+}
+
+.diffBtn{
+    padding:7px 14px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:13px;
+    padding:8px 16px;
+    font-weight:bold;
+    background:#222;
+    color:white;
+    transition:0.3s;
+}
+
+.diffBtn:hover{
+    transform:scale(1.08);
+    background:#444;
+}
+
+.diffBtn.active{
+    background:#2ecc71;
+    color:black;
+}
+
+.diffBtn:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+    transform:none;
+}
+
+
+#mobileControls{
+    display:none;
+}
+
+@media (max-width:1024px), (hover:none) and (pointer:coarse){
+
+
+    .topBar{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        grid-template-areas:
+            "score score"
+            "music music"
+            "difficulty difficulty";
+        gap:10px;
+        width:95%;
+        padding:12px;
+        margin-bottom:20px;
+    }
+
+
+    .leftPanel{
+        grid-area:music;
+        display:flex;
+        justify-content:center;
+    }
+
+    .rightPanel{
+        grid-area:score;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        width:100%;
+    }
+
+    .centerPanel{
+        grid-area:difficulty;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:8px;
+    }
+
+    #scoreBox,
+    #hisscoreBox{
+        font-size:20px;
+        margin:0;
+    }
+    #board{
+        width:95vw;
+        max-width:95vw;
+    }
+
+    #mobileControls{
+        margin-top:40px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:0px;
+    }
+    .middleRow{
+        display:flex;
+        gap:50px;
+    }
+
+    #mobileControls button{
+        width:60px;
+        height:60px;
+        border:none;
+        border-radius:50%;
+        background:#222;
+        color:white;
+        font-size:28px;
+        cursor:pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,.35);
+        transition:0.2s;
+    }
+
+    #mobileControls button:active{
+        transform:scale(0.9);
+    }
+
+}
+

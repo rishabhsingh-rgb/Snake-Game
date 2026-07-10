@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="body">
+
+    <!-- Top Bar -->
+    <div class="topBar">
+
+        <div class="leftPanel">
+            <button id="musicBtn">🔊 Music On</button>
+        </div>
+
+        <div class="centerPanel" id="difficulty">
+            <button class="diffBtn" data-speed="6">Easy</button>
+            <button class="diffBtn active" data-speed="9">Medium</button>
+            <button class="diffBtn" data-speed="14">Hard</button>
+        </div>
+
+        <div class="rightPanel">
+            <div id="scoreBox">Score: 0</div>
+            <div id="hiscoreBox">HiScore: 0</div>
+        </div>
+
+    </div>
+
+    <!-- Game Board -->
+    <div id="board"></div>
+    <div id="mobileControls">
+        <button id="upBtn">⇧</button>
+        <div class="middleRow">
+            <button id="leftBtn">⇦</button>
+            <button id="rightBtn">⇨</button>
+        </div>
+        <button id="downBtn">⇩</button>
+    </div>
+    <!-- Pause -->
+    <div id="pauseText">PAUSED</div>
+
+    <!-- Game Over -->
+    <div id="gameOverScreen" class="hidden">
+        <div class="gameOverBox">
+
+            <h1>💀 GAME OVER</h1>
+
+            <p class="gameOverScore">
+                Score:
+                <span id="finalScore">0</span>
+            </p>
+
+            <button id="restartBtn">
+                🔄 Play Again
+            </button>
+
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="js/index.js"></script>
+</html>
