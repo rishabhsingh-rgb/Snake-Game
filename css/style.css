@@ -313,7 +313,7 @@
 
 
 #mobileControls{
-    display:none;
+    display: none;
 }
 
 @media (max-width:1024px), (hover:none) and (pointer:coarse){
@@ -356,7 +356,7 @@
     }
 
     #scoreBox,
-    #hisscoreBox{
+    #hiscoreBox{
         font-size:20px;
         margin:0;
     }
@@ -366,18 +366,16 @@
     }
 
     #mobileControls{
-        margin-top:40px;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        gap:0px;
-    }
-    .middleRow{
-        display:flex;
-        gap:50px;
+        display: grid;
+        grid-template-columns: repeat(3, 55px);
+        grid-template-rows: repeat(3, 55px);
+        gap: 6px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
     }
 
-    #mobileControls button{
+    #mobileControls button:not(#pauseBtn){
         width:60px;
         height:60px;
         border:none;
@@ -394,5 +392,56 @@
         transform:scale(0.9);
     }
 
+    #upBtn{
+    grid-column: 2;
+    grid-row: 1;
+    }
+
+    #leftBtn{
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+
+    #rightBtn{
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    #downBtn{
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    #pauseBtn{
+        grid-column: 2;
+        grid-row: 2;
+
+        justify-self: center;
+        align-self: center;
+
+        width: 45px;
+        height: 45px;
+
+        border: none;
+        border-radius: 50%;
+
+        background:#222 ;
+        color: white;
+
+        font-size: 18px;
+        font-weight: bold;
+
+        cursor: pointer;
+
+        transition: .2s;
+    }
+
+    #pauseBtn:active{
+        transform: scale(.92);
+    }
+
 }
+
+
 
