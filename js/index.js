@@ -1,6 +1,7 @@
  // Game Constants & Variables 
 let inputDir={x:0 ,y:0}; 
 let isPaused = false;
+const pauseBtn = document.getElementById("pauseBtn");
 const diffBtns = document.querySelectorAll(".diffBtn");
 const foodSound = new Audio('music/food.mp3');
 const gameOverSound = new Audio('music/gameover.mp3');
@@ -38,6 +39,25 @@ musicBtn.addEventListener("click", () => {
         musicSound.pause();
         musicBtn.innerText = "🔈 Music Off";
     }
+});
+
+//mobile pause button
+pauseBtn.addEventListener("click", () => {
+
+    isPaused = !isPaused;
+
+    if (isPaused) {
+
+        pauseText.style.display = "block";
+        pauseBtn.innerText = "▶";
+
+    } else {
+
+        pauseText.style.display = "none";
+        pauseBtn.innerText = "⏸";
+
+    }
+
 });
 
 //difficulty
@@ -205,6 +225,8 @@ restartBtn.addEventListener("click",()=>{
     gameOverScreen.classList.add("hidden");
     pauseText.style.display = "none";
     isPaused = false;
+    pauseText.style.display = "none";
+    pauseBtn.innerText = "⏸";
 });
 
 // Main logic starts here
@@ -238,8 +260,10 @@ window.addEventListener('keydown', e =>{
         isPaused = !isPaused;
         if (isPaused) {
             pauseText.style.display = "block";
+            pauseBtn.innerText="▶";
         } else {
             pauseText.style.display = "none";
+            pauseBtn.innerText = "⏸";
         }
     
         return;
